@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Punam Yadav - CV</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --accent-color: #16a085;
+            --text-color: #333;
+            --bg-color: #f4f4f4;
+            --white: #ffffff;
+            --base-font-size: 16px;
+        }
+
+        html {
+            font-size: var(--base-font-size);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .cv-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            background-color: var(--white);
+            width: 100%;
+            max-width: 1000px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        /* Left Column */
+        .left-column {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid var(--white);
+            object-fit: cover;
+            margin-bottom: 20px;
+            background-color: #ddd; /* Placeholder color */
+        }
+
+        .contact-info {
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .contact-item i {
+            margin-top: 4px;
+        }
+
+        .section-title-left {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            width: 100%;
+            letter-spacing: 1px;
+        }
+
+        .skills-list, .languages-list, .personal-details {
+            width: 100%;
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .skills-list li, .languages-list li, .personal-details li {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .personal-details li {
+            font-size: 0.9rem;
+        }
+
+        .personal-details strong {
+            display: block;
+            color: var(--accent-color);
+            font-size: 0.85rem;
+        }
+
+        /* Right Column */
+        .right-column {
+            padding: 40px;
+        }
+
+        .header-name {
+            margin-bottom: 30px;
+        }
+
+        .header-name h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            line-height: 1.2;
+        }
+
+        .header-name h2 {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            font-weight: 500;
+            margin-top: 5px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title span {
+            background-color: var(--accent-color);
+            width: 30px;
+            height: 5px;
+            display: inline-block;
+            border-radius: 2px;
+        }
+
+        .experience-item, .education-item, .research-item {
+            margin-bottom: 20px;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
+        }
+
+        .item-title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: var(--secondary-color);
+        }
+
+        .item-subtitle {
+            font-style: italic;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .item-date {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .item-details {
+            margin-top: 10px;
+        }
+
+        .item-details ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        .item-details li {
+            margin-bottom: 5px;
+        }
+
+        .sgpa-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        .sgpa-table th, .sgpa-table td {
+            border: 1px solid #ddd;
+            padding: 6px;
+            text-align: center;
+        }
+
+        .sgpa-table th {
+            background-color: #f9f9f9;
+        }
+
+        .declaration {
+            margin-top: 40px;
+            font-style: italic;
+            font-size: 0.9rem;
+            color: #555;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        /* Control Panel Styles */
+        .control-panel {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            width: 280px;
+            border: 1px solid #ddd;
+        }
+
+        .control-panel h3 {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.1rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        .control-group {
+            margin-bottom: 15px;
+        }
+
+        .control-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .control-group input[type="color"] {
+            width: 100%;
+            height: 40px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #34495e;
+        }
+
+        .btn-edit {
+            background: #e67e22;
+        }
+        
+        .btn-edit:hover {
+            background: #d35400;
+        }
+
+        .btn-edit.active {
+            background: #c0392b;
+        }
+
+        /* Editable Highlight */
+        [contenteditable="true"] {
+            outline: 2px dashed #3498db;
+            outline-offset: 5px;
+            cursor: text;
+        }
+        
+        [contenteditable="true"]:focus {
+            outline: 2px solid #3498db;
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+
+        @media (max-width: 1300px) {
+            .control-panel {
+                position: static;
+                width: 100%;
+                max-width: 1000px;
+                margin-bottom: 20px;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+            }
+            body {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .cv-container {
+                grid-template-columns: 1fr;
+            }
+            .left-column {
+                padding: 20px;
+            }
+            .right-column {
+                padding: 20px;
+            }
+            .header-name h1 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+            .cv-container {
+                box-shadow: none;
+                width: 100%;
+                max-width: none;
+            }
+            .left-column {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .control-panel {
+                display: none !important;
+            }
+            [contenteditable="true"] {
+                outline: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Control Panel -->
+    <div class="control-panel">
+        <h3>🎨 Customize & Print</h3>
+        <div class="control-group">
+            <label>Primary Color (Background)</label>
+            <input type="color" id="primaryColor" value="#2c3e50">
+        </div>
+        <div class="control-group">
+            <label>Accent Color (Highlights)</label>
+            <input type="color" id="accentColor" value="#16a085">
+        </div>
+        <div class="control-group">
+            <label>Font Size (Fit to Page)</label>
+            <input type="range" id="fontSize" min="10" max="18" value="16" step="0.5" style="width: 100%">
+        </div>
+        <div class="control-group">
+            <label>Profile Photo</label>
+            <input type="file" id="imageInput" accept="image/*" style="width: 100%; font-size: 0.8rem;">
+        </div>
+        <div class="control-group">
+            <label>Edit Content</label>
+            <button id="toggleEdit" class="btn btn-edit">Enable Editing ✏️</button>
+        </div>
+        <button onclick="window.print()" class="btn">Save as PDF / Print 🖨️</button>
+    </div>
+
+    <div class="cv-container" id="cvContent">
+        <!-- Left Column -->
+        <div class="left-column">
+            <!-- Profile Image -->
+            <img src="WhatsApp Image 2025-12-10 at 9.42.46 AM.jpeg" alt="Punam Yadav" class="profile-img">
+
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <h3 class="section-title-left">Contact</h3>
+                <div class="contact-item">
+                    <span>📞</span>
+                    <span>+91-9832785534</span>
+                </div>
+                <div class="contact-item">
+                    <span>✉️</span>
+                    <span>jnvpunamyadav@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>Parbelia Colliery, Amdanga, Neturia, Purulia, West Bengal - 723121</span>
+                </div>
+            </div>
+
+            <!-- Skills -->
+            <h3 class="section-title-left">Key Skills</h3>
+            <ul class="skills-list">
+                <li><strong>Nursing:</strong> Vital Signs Monitoring, First Aid & BLS, Cannulation, Infection Control</li>
+                <li><strong>Soft Skills:</strong> Active Listening, Empathy, Team Collaboration, Time Management</li>
+            </ul>
+
+            <!-- Languages -->
+            <h3 class="section-title-left">Languages</h3>
+            <ul class="languages-list">
+                <li>Hindi</li>
+                <li>English</li>
+                <li>Bengali</li>
+            </ul>
+
+            <!-- Personal Details -->
+            <h3 class="section-title-left">Personal Details</h3>
+            <ul class="personal-details">
+                <li>
+                    <strong>Date of Birth</strong>
+                    10th October 2002
+                </li>
+                <li>
+                    <strong>Father’s Name</strong>
+                    Ram Nandan Prasad Singh
+                </li>
+                <li>
+                    <strong>Mother’s Name</strong>
+                    Urmila Devi
+                </li>
+                <li>
+                    <strong>Nationality</strong>
+                    Indian
+                </li>
+            </ul>
+        </div>
+
+        <!-- Right Column -->
+        <div class="right-column">
+            <div class="header-name">
+                <h1>Punam Yadav</h1>
+                <h2>B.Sc. Nursing Student</h2>
+            </div>
+
+            <!-- Professional Summary -->
+            <div class="section">
+                <h3 class="section-title"><span></span>Professional Summary</h3>
+                <p>Dedicated and compassionate B.Sc. Nursing student with a consistent academic record and a strong foundation in patient care. Committed to learning clinical procedures and providing empathetic healthcare. Possesses excellent grounding in science subjects from schooling at JNV Purulia.</p>
+            </div>
+
+            <!-- Education -->
+            <div class="section">
+                <h3 class="section-title"><span></span>Education</h3>
+                
+                <div class="education-item">
+                    <div class="item-header">
+                        <span class="item-title">Bachelor of Science (B.Sc.) in Nursing</span>
+                        <span class="item-date">Expected 2025</span>
+                    </div>
+                    <div class="item-subtitle">Santiniketan Sebaniketan Nursing Institute, Bolpur, West Bengal</div>
+                    <div class="item-details">
+                        <table class="sgpa-table">
+                            <tr>
+                                <th>Sem 1</th><th>Sem 2</th><th>Sem 3</th><th>Sem 4</th><th>Sem 5</th><th>Sem 6</th>
+                            </tr>
+                            <tr>
+                                <td>9.00</td><td>7.79</td><td>5.59</td><td>6.55</td><td>6.09</td><td>6.76</td>
+                            </tr>
+                        </table>
+                        <p style="font-size: 0.85rem; margin-top: 5px; color: #666;">* Sem 7 & 8: Results Pending</p>
+                    </div>
+                </div>
+
+                <div class="education-item">
+                    <div class="item-header">
+                        <span class="item-title">Senior School Certificate Examination (Class XII)</span>
+                        <span class="item-date">2021</span>
+                    </div>
+                    <div class="item-subtitle">Jawahar Navodaya Vidyalaya, Dabar Balrampur, Purulia, WB (CBSE)</div>
+                    <div class="item-details">
+                        <p><strong>Percentage:</strong> 84.8%</p>
+                        <p><strong>Key Subjects:</strong> Physics (88), Chemistry (80), Biology (82), English Core (87), Hindi Core (87)</p>
+                    </div>
+                </div>
+
+                <div class="education-item">
+                    <div class="item-header">
+                        <span class="item-title">Secondary School Examination (Class X)</span>
+                        <span class="item-date">2019</span>
+                    </div>
+                    <div class="item-subtitle">Jawahar Navodaya Vidyalaya, Ptti Campus, Purulia, WB (CBSE)</div>
+                    <div class="item-details">
+                        <p>Passed with Good Grades (B1/B2) in English, Hindi, Math, Science, and Social Science.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clinical Experience -->
+            <div class="section">
+                <h3 class="section-title"><span></span>Clinical Experience & Internship</h3>
+                
+                <div class="experience-item">
+                    <div class="item-header">
+                        <span class="item-title">Internship</span>
+                    </div>
+                    <div class="item-subtitle">Bolpur Sub-divisional Hospital (Government) & Santiniketan Medical College and Hospital</div>
+                    <div class="item-details">
+                        <ul>
+                            <li>Gained practical experience in vital sign monitoring (BP, Pulse, Temperature).</li>
+                            <li>Assisted in medication administration under supervision.</li>
+                            <li>Learned basics of patient history taking and documentation.</li>
+                            <li>Managed bedside care and hygiene for admitted patients.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Research -->
+            <div class="section">
+                <h3 class="section-title"><span></span>Research</h3>
+                <div class="research-item">
+                    <p><strong>Topic:</strong> "A study to evaluate the healthy lifestyle of the elderly utilizing the heal questionnaire for the prevention of lifestyle diseases among elderly people in a selected old-age home of Bolpur"</p>
+                </div>
+            </div>
+
+            <!-- Declaration -->
+            <div class="declaration">
+                <p>I hereby declare that the above-mentioned information is correct to the best of my knowledge and belief.</p>
+                <br>
+                <p><strong>Punam Yadav</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const root = document.documentElement;
+        const primaryColorInput = document.getElementById('primaryColor');
+        const accentColorInput = document.getElementById('accentColor');
+        const fontSizeInput = document.getElementById('fontSize');
+        const imageInput = document.getElementById('imageInput');
+        const toggleEditBtn = document.getElementById('toggleEdit');
+        const cvContent = document.getElementById('cvContent');
+        const profileImg = document.querySelector('.profile-img');
+        let isEditing = false;
+
+        // Handle Color Changes
+        primaryColorInput.addEventListener('input', (e) => {
+            root.style.setProperty('--primary-color', e.target.value);
+            // Adjust secondary color slightly lighter
+            root.style.setProperty('--secondary-color', adjustColor(e.target.value, 20));
+        });
+
+        accentColorInput.addEventListener('input', (e) => {
+            root.style.setProperty('--accent-color', e.target.value);
+        });
+
+        fontSizeInput.addEventListener('input', (e) => {
+            root.style.setProperty('--base-font-size', e.target.value + 'px');
+        });
+
+        // Handle Image Upload
+        imageInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    profileImg.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Handle Edit Mode
+        toggleEditBtn.addEventListener('click', () => {
+            isEditing = !isEditing;
+            
+            // Select all text elements to make editable
+            const editableElements = cvContent.querySelectorAll('p, span, h1, h2, h3, li, td, th, div');
+            
+            if (isEditing) {
+                toggleEditBtn.textContent = 'Finish Editing ✅';
+                toggleEditBtn.classList.add('active');
+                cvContent.setAttribute('contenteditable', 'true');
+            } else {
+                toggleEditBtn.textContent = 'Enable Editing ✏️';
+                toggleEditBtn.classList.remove('active');
+                cvContent.setAttribute('contenteditable', 'false');
+            }
+        });
+
+        // Helper function to lighten color for secondary shade
+        function adjustColor(color, amount) {
+            return '#' + color.replace(/^#/, '').replace(/../g, color => ('0'+Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(16)).substr(-2));
+        }
+    </script>
+</body>
+</html>
